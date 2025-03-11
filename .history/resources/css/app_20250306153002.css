@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+aside {
+    min-height: 100vh !important;
+    background-color: #1f2937 !important; /* Tailwind's bg-gray-800 */
+}

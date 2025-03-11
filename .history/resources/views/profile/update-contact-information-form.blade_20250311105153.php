@@ -1,0 +1,79 @@
+<x-form-section submit="updateUserContactInformation">
+    <x-slot name="title">
+        {{ __('Contact Information') }}
+    </x-slot>
+
+    <x-slot name="description">
+        {{ __('Update your contact details such as phone number, address, and location.') }}
+    </x-slot>
+
+    <!-- New Section: Display Saved Contact Information -->
+    <x-slot name="summary">
+        <div class="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">{{ __('Saved Contact Information') }}</h3>
+
+            <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                <p><strong>{{ __('Phone:') }}</strong> {{ $state['phone'] ?? 'N/A' }}</p>
+                <p><strong>{{ __('Address:') }}</strong> {{ $state['address'] ?? 'N/A' }}</p>
+                <p><strong>{{ __('City:') }}</strong> {{ $state['city'] ?? 'N/A' }}</p>
+                <p><strong>{{ __('State:') }}</strong> {{ $state['state'] ?? 'N/A' }}</p>
+                <p><strong>{{ __('Country:') }}</strong> {{ $state['country'] ?? 'N/A' }}</p>
+                <p><strong>{{ __('Postal Code:') }}</strong> {{ $state['postal_code'] ?? 'N/A' }}</p>
+            </div>
+        </div>
+    </x-slot>
+
+    <x-slot name="form">
+        <!-- Phone -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="phone" value="{{ __('Phone') }}" />
+            <x-input id="phone" type="text" class="mt-1 block w-full" wire:model="state.phone" />
+            <x-input-error for="phone" class="mt-2" />
+        </div>
+
+        <!-- Address -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="address" value="{{ __('Address') }}" />
+            <x-input id="address" type="text" class="mt-1 block w-full" wire:model="state.address" />
+            <x-input-error for="address" class="mt-2" />
+        </div>
+
+        <!-- City -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="city" value="{{ __('City') }}" />
+            <x-input id="city" type="text" class="mt-1 block w-full" wire:model="state.city" />
+            <x-input-error for="city" class="mt-2" />
+        </div>
+
+        <!-- State -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="state" value="{{ __('State') }}" />
+            <x-input id="state" type="text" class="mt-1 block w-full" wire:model="state.state" />
+            <x-input-error for="state" class="mt-2" />
+        </div>
+
+        <!-- Country -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="country" value="{{ __('Country') }}" />
+            <x-input id="country" type="text" class="mt-1 block w-full" wire:model="state.country" />
+            <x-input-error for="country" class="mt-2" />
+        </div>
+
+        <!-- Postal Code -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="postal_code" value="{{ __('Postal Code') }}" />
+            <x-input id="postal_code" type="text" class="mt-1 block w-full" wire:model="state.postal_code" />
+            <x-input-error for="postal_code" class="mt-2" />
+        </div>
+    </x-slot>
+
+    <x-slot name="actions">
+        <x-action-message class="me-3" on="saved">
+            {{ __('Saved.') }}
+        </x-action-message>
+
+        <x-button wire:loading.attr="disabled">
+            {{ __('Save') }}
+        </x-button>
+    </x-slot>
+</x-form-section>
